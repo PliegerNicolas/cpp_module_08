@@ -1,14 +1,19 @@
 #pragma once
 
-#include <iostream>
-#include <exception>
-#include <algorithm>
+#include "easyfind.hpp"
 
 template <typename T>
-typename T::iterator	easyfind(T &container, int value)
+typename T::size_type	easyfind(T &container, const int value)
 {
-	if (container.empty())
-		throw std::exception();
-	(void)value;
-	return (container.end());
+    typename T::iterator	it;
+	typename T::size_type	index;
+
+	it = std::find(container.begin(), container.end(), value);
+
+	if (it != container.end())
+	{
+		index = std::distance(container.begin(), it);
+		return (index);
+	}
+    throw std::runtime_error("Value not found in container");
 }
