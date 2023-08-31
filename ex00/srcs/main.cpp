@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:13:57 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 19:27:47 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/08/31 19:34:33 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "easyfind.hpp"
@@ -33,7 +33,7 @@ static void	testIntVector(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
 	try
@@ -43,7 +43,7 @@ static void	testIntVector(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
 	try
@@ -53,7 +53,7 @@ static void	testIntVector(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 }
 
@@ -74,7 +74,7 @@ static void	testIntList(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
 	try
@@ -84,7 +84,7 @@ static void	testIntList(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
 	try
@@ -94,8 +94,30 @@ static void	testIntList(void)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << RED << "no value found" << CLEAR << std::endl;
+		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
+}
+
+static void	testDoubleVector(void)
+{
+	std::cout << "\033[36;4m" << "testDoubleVector():" << CLEAR << std::endl;
+
+	std::vector<double>				v1;
+	std::vector<double>::size_type	index;
+
+	for(size_t i = 0; i < 10; i++)
+		v1.push_back(std::rand() % 10000 * 0.01);
+
+	try
+	{
+		index = easyfind(v1, 3);
+		std::cout << GREEN << "iterator == "<< GRAY << index << CLEAR << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << CLEAR << std::endl;
+	}
+
 }
 
 int	main(void)
@@ -103,5 +125,6 @@ int	main(void)
 	std::srand(static_cast<unsigned int>(time(nullptr)));
 	testIntVector();
 	testIntList();
+	testDoubleVector();
 	return (0);
 }
