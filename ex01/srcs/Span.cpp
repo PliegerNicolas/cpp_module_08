@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:41:32 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 15:05:04 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:29:44 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -61,6 +61,19 @@ Span::~Span(void)
 	std::cout << "\033[0m" << std::endl;
 }
 
+std::ostream	&operator<<(std::ostream &os, const Span &span)
+{
+	os << "{";
+	for(size_t i = 0; i < span.getMaxSize(); i++)
+	{
+		os << span.getValue(i);
+		if (i + 1 < span.getMaxSize())
+			os << ", ";
+	}
+	os << "}";
+	return (os);
+}
+
 /* Member Functions */
 
 void	Span::addNumber(const int &nbr)
@@ -89,30 +102,21 @@ unsigned int	Span::shortestSpan(void)
 	if (_span.size() <= 1)
 		throw	std::runtime_error("Not enough elements in Span");
 	Span::sort();
-	for(std::vector<int>::iterator iter = _span.begin() + 1; iter < _span.end(); iter++)
+	shortest = -1;
+	for (size_t i = 1; i < _span.size(); ++i)
 	{
-		temp = abs(*(iter - 1) + *iter);
-		if (temp < shortest)
-			shortest = temp;
+		temp = _span[i] - _span[i - 1];
+		shortest = std::min(temp, shortest);
 	}
 	return (shortest);
 }
 
 unsigned int	Span::longestSpan(void)
 {
-	unsigned int	longest;
-	unsigned int	temp;
-
 	if (_span.size() <= 1)
 		throw	std::runtime_error("Not enough elements in Span");
 	Span::sort();
-	for(std::vector<int>::iterator iter = _span.begin(); iter < _span.end(); iter++)
-	{
-		temp = abs(*(iter - 1) + *iter);
-		if (temp > longest)
-			longest = temp;
-	}
-	return (longest);
+	return (*(_span.end() - 1) - *(_span.begin()));
 }
 
 /* Public */
@@ -124,6 +128,11 @@ int	Span::getValue(const unsigned int &index) const
 	if (index >= _maxSize)
 		throw	std::runtime_error("getValue :: Invalid index given.");
 	return (_span[index]);
+}
+
+unsigned int	Span::getMaxSize(void) const
+{
+	return (_maxSize);
 }
 
 // Setter functions
