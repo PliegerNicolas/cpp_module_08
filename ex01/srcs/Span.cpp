@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:41:32 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 11:26:14 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:05:04 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -81,29 +81,50 @@ void	Span::sort(void)
 	}
 }
 
-unsigned int	Span::shortestSpan(const int start, const int end)
+unsigned int	Span::shortestSpan(void)
 {
+	unsigned int	shortest;
+	unsigned int	temp;
+
 	if (_span.size() <= 1)
 		throw	std::runtime_error("Not enough elements in Span");
 	Span::sort();
-	(void)start;
-	(void)end;
-	return (0);
+	for(std::vector<int>::iterator iter = _span.begin() + 1; iter < _span.end(); iter++)
+	{
+		temp = abs(*(iter - 1) + *iter);
+		if (temp < shortest)
+			shortest = temp;
+	}
+	return (shortest);
 }
 
-unsigned int	Span::longestSpan(const int start, const int end)
+unsigned int	Span::longestSpan(void)
 {
+	unsigned int	longest;
+	unsigned int	temp;
+
 	if (_span.size() <= 1)
 		throw	std::runtime_error("Not enough elements in Span");
 	Span::sort();
-	(void)start;
-	(void)end;
-	return (0);
+	for(std::vector<int>::iterator iter = _span.begin(); iter < _span.end(); iter++)
+	{
+		temp = abs(*(iter - 1) + *iter);
+		if (temp > longest)
+			longest = temp;
+	}
+	return (longest);
 }
 
 /* Public */
 
 // Getter functions
+
+int	Span::getValue(const unsigned int &index) const
+{
+	if (index >= _maxSize)
+		throw	std::runtime_error("getValue :: Invalid index given.");
+	return (_span[index]);
+}
 
 // Setter functions
 
