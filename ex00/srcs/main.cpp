@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:13:57 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 19:34:33 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/09/01 10:34:56 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "easyfind.hpp"
@@ -25,7 +25,11 @@ static void	testIntVector(void)
 
 	for(size_t i = 0; i < 10; i++)
 		v1.push_back(std::rand() % 10);
+	for(size_t i = 0; i < 10; i++)
+		std::cout << v1[i] << std::endl;
 
+
+	std::cout << GREEN << "Looking for '3'" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, 3);
@@ -36,6 +40,7 @@ static void	testIntVector(void)
 		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
+	std::cout << GREEN << "Looking for '11' (out of bounds)" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, 11);
@@ -46,6 +51,7 @@ static void	testIntVector(void)
 		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
+	std::cout << GREEN << "Looking for '-5' (out of bounds)" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, -5);
@@ -66,7 +72,10 @@ static void	testIntList(void)
 
 	for(size_t i = 0; i < 10; i++)
 		v1.push_back(std::rand() % 10);
+	for(std::list<int>::iterator it = v1.begin(); it != v1.end(); it++)
+		std::cout << *it << std::endl;
 
+	std::cout << GREEN << "Looking for '9'" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, 9);
@@ -77,6 +86,7 @@ static void	testIntList(void)
 		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
+	std::cout << GREEN << "Looking for '11' (out of bounds)" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, 11);
@@ -87,6 +97,7 @@ static void	testIntList(void)
 		std::cout << RED << e.what() << CLEAR << std::endl;
 	}
 
+	std::cout << GREEN << "Looking for '-5' (out of bounds)" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, -5);
@@ -107,7 +118,10 @@ static void	testDoubleVector(void)
 
 	for(size_t i = 0; i < 10; i++)
 		v1.push_back(std::rand() % 10000 * 0.01);
+	for(size_t i = 0; i < 10; i++)
+		std::cout << v1[i] << std::endl;
 
+	std::cout << GREEN << "Looking for '3'" << CLEAR << std::endl;
 	try
 	{
 		index = easyfind(v1, 3);
