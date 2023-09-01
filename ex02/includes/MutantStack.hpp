@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:04:05 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 17:18:11 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 18:01:00 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -35,6 +35,9 @@ class	MutantStack: public std::stack<T>
 	public:
 		/* Attributs */
 
+		typedef typename std::stack<T>::container_type::iterator				iterator;
+		typedef typename std::stack<T>::container_type::reverse_iterator		reverse_iterator;
+
 		/* Constructors & Destructors */
 		MutantStack(void);
 
@@ -44,6 +47,13 @@ class	MutantStack: public std::stack<T>
 		~MutantStack(void);
 
 		/* Member functions */
+
+		// Iterators
+
+		typename MutantStack<T>::iterator			begin(void);
+		typename MutantStack<T>::iterator			end(void);
+		typename MutantStack<T>::reverse_iterator	rbegin(void);
+		typename MutantStack<T>::reverse_iterator	rend(void);
 };
 
 #include "MutantStack.tpp"

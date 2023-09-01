@@ -47,6 +47,32 @@ MutantStack<T>::~MutantStack(void)
 
 /* Member Functions */
 
+// Iterators
+
+template <class T>
+typename MutantStack<T>::iterator MutantStack<T>::begin()
+{
+	return (std::stack<T>::c.begin());
+}
+
+template <class T>
+typename MutantStack<T>::iterator MutantStack<T>::end()
+{
+	return (std::stack<T>::c.end());
+}
+
+template <class T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
+{
+	return (std::stack<T>::c.rbegin());
+}
+
+template <class T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
+{
+	return (std::stack<T>::c.rend());
+}
+
 /* Public */
 
 // Getter functions
