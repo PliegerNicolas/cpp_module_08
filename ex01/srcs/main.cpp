@@ -6,12 +6,12 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:39:17 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 16:31:32 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:34:13 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
 
-#define SIZE 3
+#define SIZE 5
 
 #define CYAN "\033[36m"
 #define CLEAR "\033[0m"

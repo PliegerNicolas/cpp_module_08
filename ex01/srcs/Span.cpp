@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:41:32 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 16:29:44 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:33:45 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -116,7 +116,7 @@ unsigned int	Span::longestSpan(void)
 	if (_span.size() <= 1)
 		throw	std::runtime_error("Not enough elements in Span");
 	Span::sort();
-	return (*(_span.end() - 1) - *(_span.begin()));
+	return (_span.back() - _span.front());
 }
 
 /* Public */
