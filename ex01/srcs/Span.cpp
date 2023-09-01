@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:41:32 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 16:33:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:57:16 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -83,6 +83,20 @@ void	Span::addNumber(const int &nbr)
 	_span.push_back(nbr);
 	if (_span.size() > 1)
 		_isSorted = false;
+}
+
+void	Span::addRange(std::vector<int>::const_iterator begin,
+	std::vector<int>::const_iterator end)
+{
+	std::vector<int>	temp;
+	unsigned int		emptySlots;
+
+	emptySlots = _maxSize - _span.size();
+	if (std::distance(begin, end) > emptySlots)
+		throw std::runtime_error("Not enough space in span");
+
+	temp = std::vector<int>(begin, end);
+	copy(temp.begin(), temp.end(), std::back_inserter(_span));
 }
 
 void	Span::sort(void)

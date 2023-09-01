@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:40:15 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 15:07:34 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:52:17 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -50,6 +50,8 @@ class	Span
 		/* Member functions */
 
 		void			addNumber(const int &nbr);
+		void			addRange(std::vector<int>::const_iterator start,
+							std::vector<int>::const_iterator end);
 
 		void			sort(void);
 
