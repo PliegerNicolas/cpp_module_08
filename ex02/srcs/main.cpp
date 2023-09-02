@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:03:14 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/02 13:20:30 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/09/02 13:25:42 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "MutantStack.hpp"
@@ -51,7 +51,6 @@ static void	iterateThroughStack(MutantStack<T> &stack)
 	it = stack.rbegin();
 	it_end = stack.rend();
 
-	std::cout << CYAN << "Stack" << CLEAR <<std::endl;
 	std::cout << GRAY << "---" << CLEAR << std::endl;
 	while (it != it_end)
 	{
@@ -87,6 +86,23 @@ static void	playWithStack(MutantStack<T> &stack)
 	iterateThroughStack(stack);
 }
 
+template <typename T>
+static void	copyStack(MutantStack<T> &stack)
+{
+	std::cout << "\033[36;4m" << "copyStack():" << CLEAR << std::endl;
+
+	MutantStack<T>	copyStack(stack);
+	MutantStack<T>	assignStack = stack;
+
+	std::cout << GREEN << "Original stack" << CLEAR << std::endl;
+	iterateThroughStack(stack);
+	std::cout << GREEN << "Copy stack" << CLEAR << std::endl;
+	iterateThroughStack(copyStack);
+	std::cout << GREEN << "Assignment stack" << CLEAR << std::endl;
+	iterateThroughStack(assignStack);
+
+}
+
 int	main(void)
 {
 	MutantStack<int>	istack;
@@ -104,7 +120,14 @@ int	main(void)
 		std::cerr << e.what() << std::endl;
 		return (1);
 	}
+	std::cout << std::endl;
+
 	playWithStack(istack);
+	std::cout << std::endl;
+
 	playWithStack(dstack);
+	std::cout << std::endl;
+
+	copyStack(istack);
 	return (0);
 }
