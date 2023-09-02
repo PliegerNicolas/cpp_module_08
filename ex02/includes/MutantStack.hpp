@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:04:05 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 18:01:00 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:46:57 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -19,7 +19,6 @@ class	MutantStack: public std::stack<T>
 {
 	private:
 		/* Attributs */
-		std::stack<T>	_stack;
 
 		/* Constructors & Destructors */
 

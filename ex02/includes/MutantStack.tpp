@@ -6,7 +6,7 @@
 /* Public */
 
 template <class T>
-MutantStack<T>::MutantStack(void)
+MutantStack<T>::MutantStack(void): std::stack<T>()
 {
 	std::cout << "\033[36;2m";
 	std::cout << "MutantStack : Default constructor called";
@@ -14,13 +14,11 @@ MutantStack<T>::MutantStack(void)
 }
 
 template <class T>
-MutantStack<T>::MutantStack(const MutantStack &other)
+MutantStack<T>::MutantStack(const MutantStack &other): std::stack<T>(other)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "MutantStack : Copy constructor called";
 	std::cout << "\033[0m" << std::endl;
-
-	(void)other;
 }
 
 template <class T>
@@ -32,7 +30,7 @@ MutantStack<T>	&MutantStack<T>::operator=(const MutantStack &other)
 
 	if (this != &other)
 	{
-		(void)other;
+		this->c = other.c;
 	}
 	return (*this);
 }
@@ -52,25 +50,25 @@ MutantStack<T>::~MutantStack(void)
 template <class T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
-	return (std::stack<T>::c.begin());
+	return (this->c.begin());
 }
 
 template <class T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
 {
-	return (std::stack<T>::c.end());
+	return (this->c.end());
 }
 
 template <class T>
 typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
 {
-	return (std::stack<T>::c.rbegin());
+	return (this->c.rbegin());
 }
 
 template <class T>
 typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
 {
-	return (std::stack<T>::c.rend());
+	return (this->c.rend());
 }
 
 /* Public */
