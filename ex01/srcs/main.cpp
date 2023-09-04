@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:39:17 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 17:01:44 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:37:29 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -22,7 +22,7 @@ static void	basicTest(void)
 
 	Span	a(SIZE);
 
-	std::srand(static_cast<unsigned int>(time(nullptr)));
+	std::srand(static_cast<unsigned int>(time(NULL)));
 
 	for (size_t i = 0; i < SIZE; i++)
 		a.addNumber(i + std::rand() % 1000);
@@ -53,8 +53,14 @@ static void	multiInsertionTest(void)
 {
 	std::cout << "\033[36;4m" << "multiInsertionTest():" << CLEAR << std::endl;
 
-	std::vector<int>	temp = {5, 1, -2, 7, 10};
+	std::vector<int>	temp;
 	Span				a(10);
+
+	temp.push_back(5);
+	temp.push_back(1);
+	temp.push_back(-2);
+	temp.push_back(7);
+	temp.push_back(10);
 
 	std::cout << a << std::endl;
 	a.addRange(temp.begin(), temp.end());

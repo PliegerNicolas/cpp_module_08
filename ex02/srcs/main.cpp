@@ -6,10 +6,11 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:03:14 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/02 13:25:42 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/09/04 13:42:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "MutantStack.hpp"
+#include "TypeTraits.tpp"
 #include <limits>
 #include <algorithm>
 
@@ -27,12 +28,12 @@ static MutantStack<T>	createStack(void)
 
 	MutantStack<T>	stack;
 
-	if (std::is_integral<T>::value)
+	if (IsIntegral<T>::value)
 	{
 		for (size_t i = 0; i < SIZE; i++)
 			stack.push(static_cast<T>((rand() % 10)));
 	}
-	else if (std::is_floating_point<T>::value)
+	else if (IsFloatingPoint<T>::value)
 	{
 		for (size_t i = 0; i < SIZE; i++)
 			stack.push(static_cast<T>((rand() % 1000) * 0.01));
@@ -108,7 +109,7 @@ int	main(void)
 	MutantStack<int>	istack;
 	MutantStack<double>	dstack;
 
-	std::srand(static_cast<unsigned int>(time(nullptr)));
+	std::srand(static_cast<unsigned int>(time(NULL)));
 
 	try
 	{

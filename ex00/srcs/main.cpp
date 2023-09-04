@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:13:57 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 10:34:56 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:32:53 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "easyfind.hpp"
@@ -136,7 +136,8 @@ static void	testDoubleVector(void)
 
 int	main(void)
 {
-	std::srand(static_cast<unsigned int>(time(nullptr)));
+	std::srand(static_cast<unsigned int>(time(NULL)));
+
 	testIntVector();
 	testIntList();
 	testDoubleVector();
