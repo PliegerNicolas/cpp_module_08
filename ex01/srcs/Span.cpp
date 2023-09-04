@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:41:32 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/01 16:57:16 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 14:05:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Span.hpp"
@@ -141,6 +141,8 @@ int	Span::getValue(const unsigned int &index) const
 {
 	if (index >= _maxSize)
 		throw	std::runtime_error("getValue :: Invalid index given.");
+	if (index >= _span.size())
+		return (0);
 	return (_span[index]);
 }
 
